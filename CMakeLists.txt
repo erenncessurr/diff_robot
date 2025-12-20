@@ -29,4 +29,10 @@ install(DIRECTORY launch
 install(DIRECTORY description
     DESTINATION share/${PROJECT_NAME})
 
+install(DIRECTORY config
+    DESTINATION share/${PROJECT_NAME})
+
+install(DIRECTORY worlds
+    DESTINATION share/${PROJECT_NAME})
+
 ament_package()
