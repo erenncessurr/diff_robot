@@ -28,21 +28,21 @@
 
     <gazebo reference="laser">
       <material value="Gazebo/Blue"/>
-      <sensor type="gpu_lidar" name="head_hokuyo_sensor">
-        <pose>0.075 0.0 0.0125 0 0 0</pose>
+      <sensor type="gpu_lidar" name="slamtec_C1">
+        <pose>0.0 0.0 0.052375 0 0 0</pose>
         <visualize>false</visualize>
-        <update_rate>10</update_rate>
+        <update_rate>50</update_rate>
         <lidar>
           <scan>
             <horizontal>
-              <samples>270</samples>
-              <min_angle>-2.0943</min_angle>
-              <max_angle>2.0943</max_angle>
+              <samples>5000</samples>
+              <min_angle>-3.1415926536</min_angle>
+              <max_angle>3.1415926536</max_angle>
             </horizontal>
           </scan>
           <range>
-            <min>0.10</min>
-            <max>20.0</max>
+            <min>0.05</min>
+            <max>12.0</max>
           </range>
         </lidar>
       <topic>scan</topic>
