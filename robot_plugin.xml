@@ -1,0 +1,9 @@
+<library path="diff_robot_hardware">
+  <class name="diff_robot/DiffBotSystemHardware"
+         type="diff_robot::DiffBotSystemHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware interface for custom robot using esp32
+    </description>
+  </class>
+</library>

@@ -7,9 +7,42 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(PkgConfig REQUIRED)
+find_package(hardware_interface REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(rclcpp REQUIRED)
+
+pkg_check_modules(LibSerial REQUIRED libserial)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+include_directories(include)
+
+add_library(diff_robot_hardware SHARED
+  hardware/diff_robot.cpp
+)
+
+target_link_libraries(diff_robot_hardware
+  PUBLIC
+  hardware_interface::hardware_interface
+  pluginlib::pluginlib
+  rclcpp::rclcpp
+  ${LibSerial_LIBRARIES} 
+)
+
+target_include_directories(diff_robot_hardware PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/hardware/include>
+  $<INSTALL_INTERFACE:include>
+  ${LibSerial_INCLUDE_DIRS} 
+)
+
+install(TARGETS diff_robot_hardware
+  EXPORT export_${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -34,5 +67,14 @@ install(DIRECTORY config
 
 install(DIRECTORY worlds
     DESTINATION share/${PROJECT_NAME})
+
+install(DIRECTORY hardware/include/ 
+    DESTINATION include
+  )
+
+install(FILES
+  robot_plugin.xml
+  DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()
