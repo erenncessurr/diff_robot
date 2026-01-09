@@ -77,4 +77,9 @@ install(FILES
   DESTINATION share/${PROJECT_NAME}
 )
 
+pluginlib_export_plugin_description_file(
+  hardware_interface
+  robot_plugin.xml
+)
+
 ament_package()

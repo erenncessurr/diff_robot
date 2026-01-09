@@ -79,7 +79,7 @@ std::vector<hardware_interface::CommandInterface> DiffBotSystemHardware::export_
   command_interfaces.emplace_back("right_wheel_joint", hardware_interface::HW_IF_VELOCITY, &right_wheel_cmd_);
   return command_interfaces;
 }
-} // namespace
+} // namespace diff_robot
 
 #include "pluginlib/class_list_macros.hpp"
 PLUGINLIB_EXPORT_CLASS(diff_robot::DiffBotSystemHardware, hardware_interface::SystemInterface)
