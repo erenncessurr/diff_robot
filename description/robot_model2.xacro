@@ -37,18 +37,18 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
             <geometry>
-                <box size="0.17386 0.140 0.080"/>
+                <box size="0.175 0.110 0.07975"/>
             </geometry>
             <material name="black"/>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
             <geometry>
-                <box size="0.17386 0.140 0.080"/>
+                <box size="0.175 0.110 0.07975"/>
             </geometry>
             <material name="black"/>
         </collision>
-        <xacro:inertial_box mass="0.5" x="0.17386" y="0.140" z="0.080">
+        <xacro:inertial_box mass="0.5" x="0.175" y="0.110" z="0.07975">
             <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -57,17 +57,17 @@
     <link name="left_wheel">
         <visual>
             <geometry>
-                <cylinder radius="0.03" length="0.03"/>
+                <cylinder radius="0.0325" length="0.03"/>
             </geometry>
             <material name="orange"/>
         </visual>
         <collision>
             <geometry>
-                <cylinder radius="0.03" length="0.03"/>
+                <cylinder radius="0.0325" length="0.03"/>
             </geometry>
             <material name="orange"/>
         </collision>
-        <xacro:inertial_cylinder mass="0.01" length="0.03" radius="0.03">
+        <xacro:inertial_cylinder mass="0.1" length="0.03" radius="0.0325">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -75,17 +75,17 @@
     <link name="right_wheel">
         <visual>
             <geometry>
-                <cylinder radius="0.03" length="0.03"/>
+                <cylinder radius="0.0325" length="0.03"/>
             </geometry>
             <material name="orange"/>
         </visual>
         <collision>
             <geometry>
-                <cylinder radius="0.03" length="0.03"/>
+                <cylinder radius="0.0325" length="0.03"/>
             </geometry>
             <material name="orange"/>
         </collision>
-        <xacro:inertial_cylinder mass="0.01" length="0.03" radius="0.03">
+        <xacro:inertial_cylinder mass="0.1" length="0.03" radius="0.0325">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -93,17 +93,17 @@
     <link name="caster_wheel">
         <visual>
             <geometry>
-                <sphere radius="0.01" />
+                <sphere radius="0.015" />
             </geometry>
             <material name="red"/>
         </visual>
         <collision>
             <geometry>
-                <sphere radius="0.01"/>
+                <sphere radius="0.015"/>
             </geometry>
             <material name="red"/>
         </collision>
-        <xacro:inertial_sphere mass="0.01" radius="0.01">
+        <xacro:inertial_sphere mass="0.15" radius="0.015">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_sphere>
     </link>
@@ -112,21 +112,21 @@
     <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
-        <origin xyz="-0.08693 0.085 -0.0325" rpy="-${pi/2} 0 0" />
+        <origin xyz="0.0 0.055 -0.0325" rpy="-${pi/2} 0 0" />
         <axis xyz="0 0 1"/>
     </joint>
 
     <joint name="right_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="right_wheel"/>
-        <origin xyz="-0.08693 -0.085 -0.0325" rpy="-${pi/2} 0 0" />
+        <origin xyz="0.0 -0.055 -0.0325" rpy="-${pi/2} 0 0" />
         <axis xyz="0 0 1"/>
     </joint>
 
     <joint name="caster_wheel_joint" type="fixed">
         <parent link="base_link"/>
         <child link="caster_wheel"/>
-        <origin xyz="0.02193 0.0 -0.05" rpy="0 0 0" />
+        <origin xyz="0.07 0.0 -0.05" rpy="0 0 0" />
         <axis xyz="0 0 1"/>
     </joint>
 
